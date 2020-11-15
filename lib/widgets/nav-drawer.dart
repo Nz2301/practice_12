@@ -1,3 +1,4 @@
+import 'package:bus/widgets/detail-page.dart';
 import 'package:flutter/material.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -44,7 +45,10 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.people),
             title: Text('Пассажиры'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.of(context).push(
+                  new MaterialPageRoute(builder: (context) => DetailPage()))
+            },
           ),
           ListTile(
             leading: Icon(Icons.schedule),

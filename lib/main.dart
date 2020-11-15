@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bus/widgets/nav-drawer.dart';
 
+import 'widgets/detail-page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -40,7 +42,7 @@ class MyHomePage extends StatelessWidget {
         key: _key,
         initialItemCount: _items.length,
         itemBuilder: (context, index, animation) =>
-            _buildItem(_items[index], animation, index),
+            _buildItem(_items[index], animation, index, context),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -49,7 +51,8 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildItem(String item, Animation animation, int index) {
+  Widget _buildItem(
+      String item, Animation animation, int index, BuildContext context) {
     return SizeTransition(
       sizeFactor: animation,
       child: Card(
@@ -92,6 +95,13 @@ class MyHomePage extends StatelessWidget {
               _removeItem(index);
             },
           ),
+          onTap: () {
+            // _newPage();
+            Navigator.push(
+              context,
+              new MaterialPageRoute(builder: (context) => DetailPage()),
+            );
+          },
         ),
       ),
     );
@@ -100,7 +110,7 @@ class MyHomePage extends StatelessWidget {
   void _removeItem(int i) {
     String removedItem = _items.removeAt(i);
     AnimatedListRemovedItemBuilder builder = (context, animation) {
-      return _buildItem(removedItem, animation, i);
+      return _buildItem(removedItem, animation, i, context);
     };
     _key.currentState.removeItem(i, builder);
   }
@@ -110,4 +120,13 @@ class MyHomePage extends StatelessWidget {
     _items.insert(i, 'Almaty Astana ${_items.length + 1}');
     _key.currentState.insertItem(i);
   }
+
+  // void _newPage() {
+  //   BuildContext context;
+  //   Navigator.push(
+  //       context,
+  //       new MaterialPageRoute(
+  //         builder: (context) => DetailPage(),
+  //       ));
+  // }
 }
