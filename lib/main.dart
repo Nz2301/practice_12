@@ -70,22 +70,6 @@ class MyHomePage extends StatelessWidget {
               width: 100.0,
               height: 100.0,
               child: Image.asset("assets/img/busAlmaty.jpg")),
-          // leading: ConstrainedBox(
-          //   constraints: BoxConstraints(
-          //       maxHeight: 300, maxWidth: 100, minHeight: 200, minWidth: 80),
-          //   child: Image.asset(
-          //     'assets/images/busAlmaty.jpg',
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          // Image.asset(
-          //   'assets/img/busAlmaty.jpg',
-          //   width: 100,
-          //   height: 300,
-          // ),
-          // leading: CircleAvatar(
-          //   backgroundColor: Colors.amber,
-          // ),
           trailing: IconButton(
             icon: Icon(
               Icons.close,
@@ -120,13 +104,4 @@ class MyHomePage extends StatelessWidget {
     _items.insert(i, 'Almaty Astana ${_items.length + 1}');
     _key.currentState.insertItem(i);
   }
-
-  // void _newPage() {
-  //   BuildContext context;
-  //   Navigator.push(
-  //       context,
-  //       new MaterialPageRoute(
-  //         builder: (context) => DetailPage(),
-  //       ));
-  // }
 }
